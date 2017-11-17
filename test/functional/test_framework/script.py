@@ -826,7 +826,7 @@ SIGHASH_SINGLE = 3
 SIGHASH_FORKID = 0x40
 SIGHASH_ANYONECANPAY = 0x80
 
-FORKID_BTP = 79 # Atomic number AU
+FORKID_BTP = 21 # Atomic number AU
 
 def FindAndDelete(script, sig):
     """Consensus critical, see FindAndDelete() in Satoshi codebase"""
