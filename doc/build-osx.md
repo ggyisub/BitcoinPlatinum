@@ -27,7 +27,7 @@ NOTE: Building with Qt4 is still supported, however, could result in a broken UI
 Build Bitcoin Core
 ------------------------
 
-1. Clone the Bitcoin Gold source code and cd into `btcgpu`
+1. Clone the Bitcoin Platinum source code and cd into `btcgpu`
 
         git clone https://github.com/btcgpu/btcpgu
         cd btcgpu
@@ -53,26 +53,26 @@ Build Bitcoin Core
 Running
 -------
 
-Bitcoin Gold is now available at `./src/bgoldd`
+Bitcoin Platinum is now available at `./src/bplatinumd`
 
 Before running, it's recommended you create an RPC configuration file.
 
-    echo -e "rpcuser=bitcoinrpc\nrpcpassword=$(xxd -l 16 -p /dev/urandom)" > "$HOME/Library/Application Support/BitcoinGold/bitcoin.conf"
+    echo -e "rpcuser=bitcoinrpc\nrpcpassword=$(xxd -l 16 -p /dev/urandom)" > "$HOME/Library/Application Support/BitcoinPlatinum/bitcoin.conf"
 
-    chmod 600 "$HOME/Library/Application Support/BitcoinGold/bitcoin.conf"
+    chmod 600 "$HOME/Library/Application Support/BitcoinPlatinum/bitcoin.conf"
 
-The first time you run bgoldd, it will start downloading the blockchain. This process could take several hours.
+The first time you run bplatinumd, it will start downloading the blockchain. This process could take several hours.
 
 You can monitor the download process by looking at the debug.log file:
 
-    tail -f $HOME/Library/Application\ Support/BitcoinGold/debug.log
+    tail -f $HOME/Library/Application\ Support/BitcoinPlatinum/debug.log
 
 Other commands:
 -------
 
-    ./src/bgoldd -daemon # Starts the bitcoin daemon.
-    ./src/bgold-cli --help # Outputs a list of command-line options.
-    ./src/bgold-cli help # Outputs a list of RPC commands when the daemon is running.
+    ./src/bplatinumd -daemon # Starts the bitcoin daemon.
+    ./src/bplatinum-cli --help # Outputs a list of command-line options.
+    ./src/bplatinum-cli help # Outputs a list of RPC commands when the daemon is running.
 
 Using Qt Creator as IDE
 ------------------------

@@ -21,7 +21,7 @@ from binascii import hexlify, unhexlify
 
 settings = {}
 
-""" Block header format of Bicoin Gold.
+""" Block header format of Bicoin Platinum.
 4+32+32+32+4+4+32 = 140
   0   4           self.nVersion = struct.unpack("<i", f.read(4))[0]
   4  32           self.hashPrevBlock = deser_uint256(f)
@@ -72,8 +72,8 @@ def calc_hdr_hash(blk_hdr):
 
     return hash2_o
 
-def calc_hash_str(blk_hdr, btg_hash):
-    if not btg_hash:
+def calc_hash_str(blk_hdr, btp_hash):
+    if not btp_hash:
         blk_hdr = blk_hdr[0:68] + blk_hdr[100:112]
     hash = calc_hdr_hash(blk_hdr)
     hash = bufreverse(hash)

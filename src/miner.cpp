@@ -191,13 +191,13 @@ std::unique_ptr<CBlockTemplate> BlockAssembler::CreateNewBlock(const CScript& sc
     pblocktemplate->vTxFees[0] = -nFees;
 
     const Consensus::Params& params = chainparams.GetConsensus();
-    int ser_flags = (nHeight < params.BTGHeight) ? SERIALIZE_BLOCK_LEGACY : 0;
+    int ser_flags = (nHeight < params.BTPHeight) ? SERIALIZE_BLOCK_LEGACY : 0;
     uint64_t nSerializeSize = GetSerializeSize(*pblock, SER_NETWORK, PROTOCOL_VERSION | ser_flags);
     LogPrintf("CreateNewBlock(): total size: %u block weight: %u txs: %u fees: %ld sigops %d\n",
               nSerializeSize, GetBlockWeight(*pblock, chainparams.GetConsensus()), nBlockTx, nFees, nBlockSigOpsCost);
 
     arith_uint256 nonce;
-    if (nHeight >= params.BTGHeight) {
+    if (nHeight >= params.BTPHeight) {
         // Randomise nonce for new block foramt.
         nonce = UintToArith256(GetRandHash());
         // Clear the top and bottom 16 bits (for local use as thread flags and counters)

@@ -47,10 +47,10 @@ struct Params {
     /** Block height at which BIP66 becomes active */
     int BIP66Height;
     /** Block height at which Bitcoin GPU hard fork becomes active */
-    int BTGHeight;
+    int BTPHeight;
     /** Premining blocks for Bitcoin GPU hard fork **/
-    int BTGPremineWindow;
-    bool BTGPremineEnforceWhitelist;
+    int BTPPremineWindow;
+    bool BTPPremineEnforceWhitelist;
     /** The first post-fork block of Bitcoin blockchain. **/
     uint256 BitcoinPostforkBlock;
     uint32_t BitcoinPostforkTime;

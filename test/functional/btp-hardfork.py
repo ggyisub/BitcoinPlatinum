@@ -2,13 +2,13 @@
 # Copyright (c) 2014-2016 The Bitcoin Core developers
 # Distributed under the MIT software license, see the accompanying
 # file COPYING or http://www.opensource.org/licenses/mit-license.php.
-"""Test cases for Bitcoin Gold fork """
+"""Test cases for Bitcoin Platinum fork """
 
 from test_framework.test_framework import BitcoinTestFramework
 from test_framework.util import *
 
 
-class BTGForkTest(BitcoinTestFramework):
+class BTPForkTest(BitcoinTestFramework):
 
     def __init__(self):
         super().__init__()
@@ -32,4 +32,4 @@ class BTGForkTest(BitcoinTestFramework):
 
 
 if __name__ == '__main__':
-    BTGForkTest().main()
+    BTPForkTest().main()

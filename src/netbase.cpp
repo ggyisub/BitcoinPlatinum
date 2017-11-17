@@ -36,7 +36,7 @@ static CCriticalSection cs_proxyInfos;
 int nConnectTimeout = DEFAULT_CONNECT_TIMEOUT;
 bool fNameLookup = DEFAULT_NAME_LOOKUP;
 bool fSkipHardforkIBD = false;
-bool fBTGBootstrapping = false;
+bool fBTPBootstrapping = false;
 
 // Need ample time for negotiation for very slow proxies such as Tor (milliseconds)
 static const int SOCKS5_RECV_TIMEOUT = 20 * 1000;

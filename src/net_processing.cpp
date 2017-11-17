@@ -441,7 +441,7 @@ void MaybeSetPeerAsAnnouncingHeaderAndIDs(NodeId nodeid, CConnman& connman) {
 bool CanDirectFetch(const Consensus::Params &consensusParams)
 {
     int64_t target_time = GetAdjustedTime();
-    if (fBTGBootstrapping && consensusParams.BitcoinPostforkTime > 0) {
+    if (fBTPBootstrapping && consensusParams.BitcoinPostforkTime > 0) {
         target_time = consensusParams.BitcoinPostforkTime;
     }
     return chainActive.Tip()->GetBlockTime() > target_time - consensusParams.nPowTargetSpacing * 20;
@@ -1283,7 +1283,7 @@ bool static ProcessMessage(CNode* pfrom, const std::string& strCommand, CDataStr
         if (nVersion < MIN_PEER_PROTO_VERSION)
         {
             // disconnect from peers older than this proto version
-            // TODO(h4x3rotab): Disconnect if we already have any BTG block.
+            // TODO(h4x3rotab): Disconnect if we already have any BTP block.
             LogPrintf("peer=%d using obsolete version %i; disconnecting\n", pfrom->GetId(), nVersion);
             connman.PushMessage(pfrom, CNetMsgMaker(INIT_PROTO_VERSION).Make(NetMsgType::REJECT, strCommand, REJECT_OBSOLETE,
                                strprintf("Version must be %d or greater", MIN_PEER_PROTO_VERSION)));
@@ -1388,8 +1388,8 @@ bool static ProcessMessage(CNode* pfrom, const std::string& strCommand, CDataStr
                   cleanSubVer, pfrom->nVersion,
                   pfrom->nStartingHeight, addrMe.ToString(), pfrom->GetId(),
                   remoteAddr);
-        if (pfrom->fUsesGoldMagic) {
-            LogPrintf("peer %d uses Gold magic in its headers\n", pfrom->id);
+        if (pfrom->fUsesPlatinumMagic) {
+            LogPrintf("peer %d uses Platinum magic in its headers\n", pfrom->id);
         }
 
         int64_t nTimeOffset = nTime - GetTime();
@@ -2298,7 +2298,7 @@ bool static ProcessMessage(CNode* pfrom, const std::string& strCommand, CDataStr
         if (mapBlockIndex.find(headers[0].hashPrevBlock) == mapBlockIndex.end() && nCount < MAX_BLOCKS_TO_ANNOUNCE) {
             nodestate->nUnconnectingHeaders++;
             uint256 stop_hash;
-            if (fBTGBootstrapping) {
+            if (fBTPBootstrapping) {
                 stop_hash = chainparams.GetConsensus().BitcoinPostforkBlock;
             }
             connman.PushMessage(pfrom, msgMaker.Make(NetMsgType::GETHEADERS, chainActive.GetLocator(pindexBestHeader), stop_hash));
@@ -2329,9 +2329,9 @@ bool static ProcessMessage(CNode* pfrom, const std::string& strCommand, CDataStr
         }
 
         CValidationState state;
-        // When bootstrapping BTG network, continue even if there are invalid blocks.
+        // When bootstrapping BTP network, continue even if there are invalid blocks.
         if (!ProcessNewBlockHeaders(headers, state, chainparams, &pindexLast)) {
-            if (fBTGBootstrapping && pindexLast != nullptr) {
+            if (fBTPBootstrapping && pindexLast != nullptr) {
                 LogPrint(BCLog::NET, "though found invalid headers, continue with valid headers for bootstrapping.\n");
             } else {
                 int nDoS;
@@ -2362,7 +2362,7 @@ bool static ProcessMessage(CNode* pfrom, const std::string& strCommand, CDataStr
             // from there instead.
             LogPrint(BCLog::NET, "more getheaders (%d) to end to peer=%d (startheight:%d)\n", pindexLast->nHeight, pfrom->GetId(), pfrom->nStartingHeight);
             uint256 stop_hash;
-            if (fBTGBootstrapping) {
+            if (fBTPBootstrapping) {
                 stop_hash = chainparams.GetConsensus().BitcoinPostforkBlock;
             }
             connman.PushMessage(pfrom, msgMaker.Make(NetMsgType::GETHEADERS, chainActive.GetLocator(pindexLast), stop_hash));
@@ -2751,10 +2751,10 @@ bool ProcessMessages(CNode* pfrom, CConnman& connman, const std::atomic<bool>& i
     if (pfrom->nVersion == 0) {
         if (memcmp(msg.hdr.pchMessageStart, chainparams.MessageStart(),
                    CMessageHeader::MESSAGE_START_SIZE) == 0) {
-            pfrom->fUsesGoldMagic = true;
-        } else if (fBTGBootstrapping) {
+            pfrom->fUsesPlatinumMagic = true;
+        } else if (fBTPBootstrapping) {
             // Allow to connect to Bitcoin clients when bootstrapping.
-            pfrom->fUsesGoldMagic = false;
+            pfrom->fUsesPlatinumMagic = false;
         }
     }
     
@@ -2961,7 +2961,7 @@ bool SendMessages(CNode* pto, CConnman& connman, const std::atomic<bool>& interr
                     pindexStart = pindexStart->pprev;
                 LogPrint(BCLog::NET, "initial getheaders (%d) to peer=%d (startheight:%d)\n", pindexStart->nHeight, pto->GetId(), pto->nStartingHeight);
                 uint256 stop_hash;
-                if (fBTGBootstrapping) {
+                if (fBTPBootstrapping) {
                     stop_hash = consensusParams.BitcoinPostforkBlock;
                 }
                 connman.PushMessage(pto, msgMaker.Make(NetMsgType::GETHEADERS, chainActive.GetLocator(pindexStart), stop_hash));

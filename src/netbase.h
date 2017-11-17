@@ -19,7 +19,7 @@
 
 extern int nConnectTimeout;
 extern bool fNameLookup;
-extern bool fBTGBootstrapping;
+extern bool fBTPBootstrapping;
 extern bool fSkipHardforkIBD;
 
 //! -timeout default

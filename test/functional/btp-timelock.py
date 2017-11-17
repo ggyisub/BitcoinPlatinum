@@ -1,8 +1,8 @@
 #!/usr/bin/env python3
-# Copyright (c) 2017 The Bitcoin Gold developers
+# Copyright (c) 2017 The Bitcoin Platinum developers
 # Distributed under the MIT software license, see the accompanying
 # file COPYING or http://www.opensource.org/licenses/mit-license.php.
-"""Test cases for Bitcoin Gold CLTV wallet."""
+"""Test cases for Bitcoin Platinum CLTV wallet."""
 
 import io
 
@@ -24,7 +24,7 @@ def sig(x):
         return 0
 
 
-class BTGTimeLockTest(BitcoinTestFramework):
+class BTPTimeLockTest(BitcoinTestFramework):
 
     def __init__(self):
         super().__init__()
@@ -121,4 +121,4 @@ class BTGTimeLockTest(BitcoinTestFramework):
 
 
 if __name__ == '__main__':
-    BTGTimeLockTest().main()
+    BTPTimeLockTest().main()

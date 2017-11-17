@@ -419,8 +419,8 @@ CNode* CConnman::ConnectNode(CAddress addrConnect, const char *pszDest, bool fCo
         uint64_t nonce = GetDeterministicRandomizer(RANDOMIZER_ID_LOCALHOSTNONCE).Write(id).Finalize();
         CAddress addr_bind = GetBindAddress(hSocket);
         CNode* pnode = new CNode(id, nLocalServices, GetBestHeight(), hSocket, addrConnect, CalculateKeyedNetGroup(addrConnect), nonce, addr_bind, pszDest ? pszDest : "", false);
-        if (fBTGBootstrapping) {
-            pnode->fUsesGoldMagic = false;
+        if (fBTPBootstrapping) {
+            pnode->fUsesPlatinumMagic = false;
         }
         pnode->nServicesExpected = ServiceFlags(addrConnect.nServices & nRelevantServices);
         pnode->AddRef();
@@ -681,7 +681,7 @@ void CNode::copyStats(CNodeStats &stats)
         X(nRecvBytes);
     }
     X(fWhitelisted);
-    X(fUsesGoldMagic);
+    X(fUsesPlatinumMagic);
 
     // It is common for nodes with good ping times to suddenly become lagged,
     // due to a new block arriving or other large transfer.
@@ -1619,7 +1619,7 @@ void CConnman::ThreadDNSAddressSeed()
                 for (const CNetAddr& ip : vIPs)
                 {
                     int nOneDay = 24*3600;
-                    CAddress addr = CAddress(CService(ip, Params().GetDefaultPort(fBTGBootstrapping)), requiredServiceBits);
+                    CAddress addr = CAddress(CService(ip, Params().GetDefaultPort(fBTPBootstrapping)), requiredServiceBits);
                     addr.nTime = GetTime() - 3*nOneDay - GetRand(4*nOneDay); // use a random age between 3 and 7 days old
                     vAdd.push_back(addr);
                     found++;
@@ -1822,7 +1822,7 @@ void CConnman::ThreadOpenConnections()
 
             // do not allow non-default ports, unless after 50 invalid addresses selected already
             if ((addr.GetPort() != Params().GetDefaultPort() ||
-                 (fBTGBootstrapping && addr.GetPort() != Params().GetDefaultPort(true))) && nTries < 50)
+                 (fBTPBootstrapping && addr.GetPort() != Params().GetDefaultPort(true))) && nTries < 50)
                 continue;
 
             addrConnect = addr;
@@ -2735,7 +2735,7 @@ CNode::CNode(NodeId idIn, ServiceFlags nLocalServicesIn, int nMyStartingHeightIn
     nPingUsecStart = 0;
     nPingUsecTime = 0;
     fPingQueued = false;
-    fUsesGoldMagic = true;
+    fUsesPlatinumMagic = true;
     nMinPingUsecTime = std::numeric_limits<int64_t>::max();
     minFeeFilter = 0;
     lastSentFeeFilter = 0;

@@ -1,10 +1,10 @@
 <!--- Remove sections that do not apply -->
 
-This issue tracker is only for technical issues related to bitcoin-core.
+This issue tracker is only for technical issues related to bitcoin-platinum.
 
 General bitcoin questions and/or support requests and are best directed to the [Bitcoin StackExchange](https://bitcoin.stackexchange.com).
 
-For reporting security issues, please see the official [Bitcoin Gold website](https://btcgpu.org/).
+For reporting security issues, please see the official [Bitcoin Platinum website](https://bitcoinplatinum.tech/).
 
 ### Describe the issue
 
