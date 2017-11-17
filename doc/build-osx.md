@@ -27,12 +27,12 @@ NOTE: Building with Qt4 is still supported, however, could result in a broken UI
 Build Bitcoin Core
 ------------------------
 
-1. Clone the Bitcoin Platinum source code and cd into `btcgpu`
+1. Clone the Bitcoin Platinum source code and cd into `bitcoinplatinum`
 
-        git clone https://github.com/btcgpu/btcpgu
-        cd btcgpu
+        git clone https://github.com/bitcoinplatinum/btcpgu
+        cd bitcoinplatinum
 
-2.  Build btcgpu:
+2.  Build bitcoinplatinum:
 
     Configure and build the headless bitcoin binaries as well as the GUI (if Qt is found).
 
