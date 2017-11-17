@@ -337,7 +337,6 @@ public:
         consensus.BIP66Height = 1251; // BIP66 activated on regtest (Used in rpc activation tests)
         consensus.BTPHeight = 3000;
         consensus.BTPPremineWindow = 10;
-        consensus.BTPPremineEnforceWhitelist = false;
         consensus.BitcoinPostforkBlock = uint256();
         consensus.BitcoinPostforkTime = 0;
         consensus.powLimit = uint256S("7fffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff");
