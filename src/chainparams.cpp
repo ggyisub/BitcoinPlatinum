@@ -96,7 +96,7 @@ public:
         consensus.BIP34Hash = uint256S("0x000000000000024b89b42a942fe0d9fea3bb44ab7bd1b19115dd6a759c0808b8");
         consensus.BIP65Height = 388381; // 000000000000000004c2b624ed5d7756c508d90fd0da2c7c679febfa6c4735f0
         consensus.BIP66Height = 363725; // 00000000000000000379eaa19dce8c9b722d46ae6a57c2f1a988119488b50931
-        consensus.BTPHeight = 491407; // Around 10/25/2017 12:00 UTC
+        consensus.BTPHeight = 1000000; // Around 11/28/2017 UTC(Not enabled yet)
         consensus.BTPPremineWindow = 50;
         consensus.BitcoinPostforkBlock = uint256S("000000000000000000e5438564434edaf41e63829a637521a96235adf4653e1b");
         consensus.BitcoinPostforkTime = 1508808039;
@@ -146,11 +146,11 @@ public:
         pchMessageStartLegacy[2] = 0xb4;
         pchMessageStartLegacy[3] = 0xd9;
 
-        pchMessageStart[0] = 0xe1;
-        pchMessageStart[1] = 0x47;
-        pchMessageStart[2] = 0x6d;
-        pchMessageStart[3] = 0x44;
-        nDefaultPort = 8338; // different port than Bitcoin
+        pchMessageStart[0] = 0xa5;
+        pchMessageStart[1] = 0x1a;
+        pchMessageStart[2] = 0x16;
+        pchMessageStart[3] = 0x41;
+        nDefaultPort = 4485; // different port than Bitcoin/Bitcoin Gold
         nBitcoinDefaultPort = 8333;
         nPruneAfterHeight = 100000;
         const size_t N = 200, K = 9;
@@ -166,10 +166,6 @@ public:
         vFixedSeeds.clear();
         vSeeds.clear();
         // nodes with support for servicebits filtering should be at the top
-
-        vSeeds.emplace_back("eu-dnsseed.bitcoingold-official.org", true);
-        vSeeds.emplace_back("dnsseed.bitcoingold.org", true);
-        vSeeds.emplace_back("dnsseed.btcgpu.org", true);
 
         base58Prefixes[PUBKEY_ADDRESS] = std::vector<unsigned char>(1,38);  // prefix: G
         base58Prefixes[SCRIPT_ADDRESS] = std::vector<unsigned char>(1,23);  // prefix: A
@@ -223,7 +219,7 @@ public:
         consensus.BIP34Hash = uint256S("0x0000000023b3a96d3484e5abb3755c413e7d41500f8e2a5c3f0dd01299cd8ef8");
         consensus.BIP65Height = 581885; // 00000000007f6655f22f98e72ed80d8b06dc761d5da09df0fa1dc4be4f861eb6
         consensus.BIP66Height = 330776; // 000000002104c8c45e99a8853285a3b592602a3ccde2b832481da85e9e4ba182
-        consensus.BTPHeight = 1210320;
+        consensus.BTPHeight = 1000000; // Around 11/28/2017 UTC(Not enabled yet)
         consensus.BTPPremineWindow = 50;
         consensus.BitcoinPostforkBlock = uint256S("00000000ef93c2d9bac8da61ff11a699a5b815f77a194c567c5de0dbdf0bf28b");
         consensus.BitcoinPostforkTime = 1508111338;
@@ -269,11 +265,11 @@ public:
         pchMessageStartLegacy[2] = 0x09;
         pchMessageStartLegacy[3] = 0x07;
 
-        pchMessageStart[0] = 0xe1;
-        pchMessageStart[1] = 0x47;
-        pchMessageStart[2] = 0x6d;
-        pchMessageStart[3] = 0x44;
-        nDefaultPort = 18338;
+        pchMessageStart[0] = 0x0b;
+        pchMessageStart[1] = 0xc2;
+        pchMessageStart[2] = 0xac;
+        pchMessageStart[3] = 0x40;
+        nDefaultPort = 4487;
         nBitcoinDefaultPort = 18333;
         nPruneAfterHeight = 1000;
         const size_t N = 200, K = 9;  // Same as mainchain.
@@ -289,11 +285,6 @@ public:
         vFixedSeeds.clear();
         vSeeds.clear();
         // nodes with support for servicebits filtering should be at the top
-
-        vSeeds.emplace_back("eu-test-dnsseed.bitcoingold-official.org", true);
-        vSeeds.emplace_back("test-dnsseed.bitcoingold.org", true);
-        vSeeds.emplace_back("test-dnsseed.btcgpu.org", true);
-        vSeeds.emplace_back("btg.dnsseed.minertopia.org", true);
 
         base58Prefixes[PUBKEY_ADDRESS] = std::vector<unsigned char>(1,111);
         base58Prefixes[SCRIPT_ADDRESS] = std::vector<unsigned char>(1,196);
@@ -335,7 +326,7 @@ public:
         consensus.BIP34Hash = uint256();
         consensus.BIP65Height = 1351; // BIP65 activated on regtest (Used in rpc activation tests)
         consensus.BIP66Height = 1251; // BIP66 activated on regtest (Used in rpc activation tests)
-        consensus.BTPHeight = 3000;
+        consensus.BTPHeight = 4000; // BTPHeight
         consensus.BTPPremineWindow = 10;
         consensus.BitcoinPostforkBlock = uint256();
         consensus.BitcoinPostforkTime = 0;
@@ -373,12 +364,12 @@ public:
         pchMessageStartLegacy[2] = 0xb5;
         pchMessageStartLegacy[3] = 0xda;
 
-        pchMessageStart[0] = 0xfa;
-        pchMessageStart[1] = 0xbf;
-        pchMessageStart[2] = 0xb5;
-        pchMessageStart[3] = 0xda;
+        pchMessageStart[0] = 0x37;
+        pchMessageStart[1] = 0x6c;
+        pchMessageStart[2] = 0x04;
+        pchMessageStart[3] = 0x3e;
 
-        nDefaultPort = 18444;
+        nDefaultPort = 4489;
         nBitcoinDefaultPort = 18444;
         nPruneAfterHeight = 1000;
         const size_t N = 48, K = 5;
