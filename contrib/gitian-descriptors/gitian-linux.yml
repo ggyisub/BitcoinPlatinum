@@ -2,7 +2,7 @@
 name: "bitcoin-linux-0.15"
 enable_cache: true
 suites:
-- "trusty"
+- "xenial"
 architectures:
 - "amd64"
 packages:
