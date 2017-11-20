@@ -2,7 +2,7 @@
 name: "bitcoin-platinum-linux-0.15"
 enable_cache: true
 suites:
-- "xenial"
+- "trusty"
 architectures:
 - "amd64"
 packages:
