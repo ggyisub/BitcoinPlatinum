@@ -168,8 +168,8 @@ public:
         // You can use -bootstrap options as well.
         vSeeds.emplace_back("main-korea-dnsseed.btcplt.org", true); // wjcloud <shnano1128@naver.com>
 
-        base58Prefixes[PUBKEY_ADDRESS] = std::vector<unsigned char>(1,38);  // prefix: G
-        base58Prefixes[SCRIPT_ADDRESS] = std::vector<unsigned char>(1,23);  // prefix: A
+        base58Prefixes[PUBKEY_ADDRESS] = std::vector<unsigned char>(1,0);
+        base58Prefixes[SCRIPT_ADDRESS] = std::vector<unsigned char>(1,5);
         base58Prefixes[SECRET_KEY] =     std::vector<unsigned char>(1,128);
         base58Prefixes[EXT_PUBLIC_KEY] = {0x04, 0x88, 0xB2, 0x1E};
         base58Prefixes[EXT_SECRET_KEY] = {0x04, 0x88, 0xAD, 0xE4};
@@ -409,28 +409,11 @@ public:
 
 };
 
-class BitcoinAddressChainParam : public CMainParams
-{
-public:
-    BitcoinAddressChainParam()
-    {
-        base58Prefixes[PUBKEY_ADDRESS] = std::vector<unsigned char>(1,0);
-        base58Prefixes[SCRIPT_ADDRESS] = std::vector<unsigned char>(1,5);
-    }
-};
-
 static std::unique_ptr<CChainParams> globalChainParams;
-static BitcoinAddressChainParam chainParamsForAddressConversion;
 
-const CChainParams &Params()
-{
+const CChainParams &Params() {
     assert(globalChainParams);
     return *globalChainParams;
-}
-
-const CChainParams &BitcoinAddressFormatParams()
-{
-    return chainParamsForAddressConversion;
 }
 
 std::unique_ptr<CChainParams> CreateChainParams(const std::string& chain)
