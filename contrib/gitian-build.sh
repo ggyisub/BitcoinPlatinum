@@ -275,7 +275,7 @@ then
 	    echo ""
 	    ./bin/gbuild -j ${proc} -m ${mem} --commit BitcoinPlatinum=${COMMIT} --url BitcoinPlatinum=${url} ../BitcoinPlatinum/contrib/gitian-descriptors/gitian-linux.yml
 	    ./bin/gsign -p $signProg --signer $SIGNER --release ${VERSION}-linux --destination ../gitian.sigs/ ../BitcoinPlatinum/contrib/gitian-descriptors/gitian-linux.yml
-	    mv build/out/bitcoin-*.tar.gz build/out/src/bitcoin-*.tar.gz ../bitcoin-binaries/${VERSION}
+	    mv build/out/bitcoin-platinum-*.tar.gz build/out/src/bitcoin-platinum-*.tar.gz ../bitcoin-binaries/${VERSION}
 	fi
 	# Windows
 	if [[ $windows = true ]]
@@ -285,8 +285,8 @@ then
 	    echo ""
 	    ./bin/gbuild -j ${proc} -m ${mem} --commit BitcoinPlatinum=${COMMIT} --url BitcoinPlatinum=${url} ../BitcoinPlatinum/contrib/gitian-descriptors/gitian-win.yml
 	    ./bin/gsign -p $signProg --signer $SIGNER --release ${VERSION}-win-unsigned --destination ../gitian.sigs/ ../BitcoinPlatinum/contrib/gitian-descriptors/gitian-win.yml
-	    mv build/out/bitcoin-*-win-unsigned.tar.gz inputs/bitcoin-win-unsigned.tar.gz
-	    mv build/out/bitcoin-*.zip build/out/bitcoin-*.exe ../bitcoin-binaries/${VERSION}
+	    mv build/out/bitcoin-platinum-*-win-unsigned.tar.gz inputs/bitcoin-platinum-win-unsigned.tar.gz
+	    mv build/out/bitcoin-platinum-*.zip build/out/bitcoin-platinum-*.exe ../bitcoin-binaries/${VERSION}
 	fi
 	# Mac OSX
 	if [[ $osx = true ]]
@@ -296,8 +296,8 @@ then
 	    echo ""
 	    ./bin/gbuild -j ${proc} -m ${mem} --commit BitcoinPlatinum=${COMMIT} --url BitcoinPlatinum=${url} ../BitcoinPlatinum/contrib/gitian-descriptors/gitian-osx.yml
 	    ./bin/gsign -p $signProg --signer $SIGNER --release ${VERSION}-osx-unsigned --destination ../gitian.sigs/ ../BitcoinPlatinum/contrib/gitian-descriptors/gitian-osx.yml
-	    mv build/out/bitcoin-*-osx-unsigned.tar.gz inputs/bitcoin-osx-unsigned.tar.gz
-	    mv build/out/bitcoin-*.tar.gz build/out/bitcoin-*.dmg ../bitcoin-binaries/${VERSION}
+	    mv build/out/bitcoin-platinum-*-osx-unsigned.tar.gz inputs/bitcoin-platinum-osx-unsigned.tar.gz
+	    mv build/out/bitcoin-platinum-*.tar.gz build/out/bitcoin-platinum-*.dmg ../bitcoin-binaries/${VERSION}
 	fi
 	popd
 
@@ -361,8 +361,8 @@ then
 	    echo ""
 	    ./bin/gbuild -i --commit signature=${COMMIT} ../BitcoinPlatinum/contrib/gitian-descriptors/gitian-win-signer.yml
 	    ./bin/gsign -p $signProg --signer $SIGNER --release ${VERSION}-win-signed --destination ../gitian.sigs/ ../BitcoinPlatinum/contrib/gitian-descriptors/gitian-win-signer.yml
-	    mv build/out/bitcoin-*win64-setup.exe ../bitcoin-binaries/${VERSION}
-	    mv build/out/bitcoin-*win32-setup.exe ../bitcoin-binaries/${VERSION}
+	    mv build/out/bitcoin-platinum-*win64-setup.exe ../bitcoin-binaries/${VERSION}
+	    mv build/out/bitcoin-platinum-*win32-setup.exe ../bitcoin-binaries/${VERSION}
 	fi
 	# Sign Mac OSX
 	if [[ $osx = true ]]
@@ -372,7 +372,7 @@ then
 	    echo ""
 	    ./bin/gbuild -i --commit signature=${COMMIT} ../BitcoinPlatinum/contrib/gitian-descriptors/gitian-osx-signer.yml
 	    ./bin/gsign -p $signProg --signer $SIGNER --release ${VERSION}-osx-signed --destination ../gitian.sigs/ ../BitcoinPlatinum/contrib/gitian-descriptors/gitian-osx-signer.yml
-	    mv build/out/bitcoin-osx-signed.dmg ../bitcoin-binaries/${VERSION}/bitcoin-${VERSION}-osx.dmg
+	    mv build/out/bitcoin-platinum-osx-signed.dmg ../bitcoin-binaries/${VERSION}/bitcoin-platinum-${VERSION}-osx.dmg
 	fi
 	popd
 
