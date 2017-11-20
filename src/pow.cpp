@@ -24,10 +24,10 @@ unsigned int GetNextWorkRequired(const CBlockIndex* pindexLast, const CBlockHead
     if (postfork == false) {
         return BitcoinGetNextWorkRequired(pindexLast, pblock, params);
     }
-    else if (nHeight < params.BTPHeight + params.BTPPremineWindow) {
+    else if (nHeight < params.BTPHeight + params.BTPDiffdropWindow) {
         return nProofOfWorkLimit;
     }
-    else if (nHeight < params.BTPHeight + params.BTPPremineWindow + params.nPowAveragingWindow){
+    else if (nHeight < params.BTPHeight + params.BTPDiffdropWindow + params.nPowAveragingWindow){
         return UintToArith256(params.powLimitStart).GetCompact();
     }
     

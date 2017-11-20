@@ -97,7 +97,7 @@ public:
         consensus.BIP65Height = 388381; // 000000000000000004c2b624ed5d7756c508d90fd0da2c7c679febfa6c4735f0
         consensus.BIP66Height = 363725; // 00000000000000000379eaa19dce8c9b722d46ae6a57c2f1a988119488b50931
         consensus.BTPHeight = 496320; // Around 11/28/2017 UTC
-        consensus.BTPPremineWindow = 50;
+        consensus.BTPDiffdropWindow = 50;
         consensus.BitcoinPostforkBlock = uint256S("000000000000000000e5438564434edaf41e63829a637521a96235adf4653e1b");
         consensus.BitcoinPostforkTime = 1508808039;
         consensus.powLimit = uint256S("0007ffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff");
@@ -221,7 +221,7 @@ public:
         consensus.BIP65Height = 13;
         consensus.BIP66Height = 12;
         consensus.BTPHeight = 20;
-        consensus.BTPPremineWindow = 1;
+        consensus.BTPDiffdropWindow = 1;
         consensus.powLimit = uint256S("0007ffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff");
         consensus.powLimitStart = uint256S("0000000fffffffffffffffffffffffffffffffffffffffffffffffffffffffff");
         consensus.powLimitLegacy = uint256S("00000000ffffffffffffffffffffffffffffffffffffffffffffffffffffffff");
@@ -326,7 +326,7 @@ public:
         consensus.BIP65Height = 1351; // BIP65 activated on regtest (Used in rpc activation tests)
         consensus.BIP66Height = 1251; // BIP66 activated on regtest (Used in rpc activation tests)
         consensus.BTPHeight = 4000; // BTPHeight
-        consensus.BTPPremineWindow = 10;
+        consensus.BTPDiffdropWindow = 10;
         consensus.BitcoinPostforkBlock = uint256();
         consensus.BitcoinPostforkTime = 0;
         consensus.powLimit = uint256S("7fffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff");

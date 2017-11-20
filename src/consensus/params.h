@@ -49,7 +49,7 @@ struct Params {
     /** Block height at which Bitcoin Platinum hard fork becomes active */
     int BTPHeight;
     /** Mining blocks for Bitcoin Platinum hard fork **/
-    int BTPPremineWindow;
+    int BTPDiffdropWindow;
     /** The first post-fork block of Bitcoin blockchain. **/
     uint256 BitcoinPostforkBlock;
     uint32_t BitcoinPostforkTime;
